@@ -37,6 +37,9 @@ debug-assertions = true
 # new `GlobalDlmalloc` as well which implements this trait.
 global = []
 
+# Use externally linked functions for allocations.
+external = []
+
 # Enable very expensive debug checks in this crate
 debug = []
 

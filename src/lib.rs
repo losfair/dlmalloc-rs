@@ -39,19 +39,23 @@ pub struct Dlmalloc(dlmalloc::Dlmalloc);
 /// Constant initializer for `Dlmalloc` structure.
 pub const DLMALLOC_INIT: Dlmalloc = Dlmalloc(dlmalloc::DLMALLOC_INIT);
 
-#[cfg(target_arch = "wasm32")]
+#[cfg(feature = "external")]
+#[path = "external.rs"]
+mod sys;
+
+#[cfg(all(not(feature = "external"), target_arch = "wasm32"))]
 #[path = "wasm.rs"]
 mod sys;
 
-#[cfg(target_os = "macos")]
+#[cfg(all(not(feature = "external"), target_os = "macos"))]
 #[path = "macos.rs"]
 mod sys;
 
-#[cfg(target_os = "linux")]
+#[cfg(all(not(feature = "external"), target_os = "linux"))]
 #[path = "linux.rs"]
 mod sys;
 
-#[cfg(target_env = "sgx")]
+#[cfg(all(not(feature = "external"), target_env = "sgx"))]
 #[path = "sgx.rs"]
 mod sys;
 
