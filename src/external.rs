@@ -50,7 +50,7 @@ pub fn release_global_lock() {
 }
 
 pub fn allocates_zeros() -> bool {
-    true
+    false
 }
 
 pub fn page_size() -> usize {
