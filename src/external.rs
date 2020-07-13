@@ -41,12 +41,12 @@ pub fn can_release_part(_flags: u32) -> bool {
 
 #[cfg(feature = "global")]
 pub fn acquire_global_lock() {
-    __dlmalloc_acquire_global_lock()
+    unsafe { __dlmalloc_acquire_global_lock() }
 }
 
 #[cfg(feature = "global")]
 pub fn release_global_lock() {
-    __dlmalloc_release_global_lock()
+    unsafe { __dlmalloc_release_global_lock() }
 }
 
 pub fn allocates_zeros() -> bool {
